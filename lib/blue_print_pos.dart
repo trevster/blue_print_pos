@@ -322,4 +322,224 @@ class BluePrintPos {
     }
     return results;
   }
+
+  /// Passing data from Flutter to Native
+  ///
+  /// [data] the Map<String, dynamic>
+  /// note that this currently only works on Android.
+  static Future<void> printReceiptPayment({
+    required Map<String, dynamic> merchant,
+    required Map<String, dynamic> transaction,
+    Map<String, dynamic>? customReceipt,
+    int orderNumber = 0,
+    String? paidAmount,
+    String? changeAmount,
+    Map<String, dynamic>? reward,
+    bool canShowRewardQR = false,
+    bool canAccessCustomReceipt = false,
+    bool canShowTicketingQR = false,
+    bool openDrawer = false,
+    String eMenuLinkShort = '',
+    required bool isDevicePax,
+  }) async {
+    try {
+      final Map<String, dynamic> arguments = <String, dynamic>{
+        'merchant': merchant,
+        'transaction': transaction,
+        'customReceipt': customReceipt,
+        'orderNumber': orderNumber,
+        'paidAmount': paidAmount,
+        'changeAmount': changeAmount,
+        'reward': reward,
+        'canShowRewardQR': canShowRewardQR,
+        'canAccessCustomReceipt': canAccessCustomReceipt,
+        'canShowTicketingQR': canShowTicketingQR,
+        'openDrawer': openDrawer,
+        'eMenuLinkShort': eMenuLinkShort,
+        'isDevicePax': isDevicePax,
+      };
+      final String? result = await _channel.invokeMethod('printReceiptPayment', arguments);
+    } on Exception catch (e) {
+      log('[method:printReceiptPayment]: $e');
+      throw Exception('Error: $e');
+    }
+  }
+
+  /// Passing data from Flutter to Native
+  ///
+  /// [data] the Map<String, dynamic>
+  /// note that this currently only works on Android.
+  static Future<void> printOrder({
+    required Map<String, dynamic> transaction,
+    required int orderNumber,
+    required bool canShowTicketingQR,
+    required bool isDevicePax,
+  }) async {
+    try {
+      final Map<String, dynamic> arguments = <String, dynamic>{
+        'transaction': transaction,
+        'orderNumber': orderNumber,
+        'canShowTicketingQR': canShowTicketingQR,
+        'isDevicePax': isDevicePax,
+      };
+      final String? result = await _channel.invokeMethod('printOrder', arguments);
+    } on Exception catch (e) {
+      log('[method:printOrder]: $e');
+      throw Exception('Error: $e');
+    }
+  }
+
+  /// Passing data from Flutter to Native
+  ///
+  /// [data] the Map<String, dynamic>
+  /// note that this currently only works on Android.
+  static Future<void> printDeliveryInvoice({
+    required Map<String, dynamic> transaction,
+    required bool isDevicePax,
+  }) async {
+    try {
+      final Map<String, dynamic> arguments = <String, dynamic>{
+        'transaction': transaction,
+        'isDevicePax': isDevicePax,
+      };
+      final String? result = await _channel.invokeMethod('printDeliveryInvoice', arguments);
+    } on Exception catch (e) {
+      log('[method:printDeliveryInvoice]: $e');
+      throw Exception('Error: $e');
+    }
+  }
+
+  /// Passing data from Flutter to Native
+  ///
+  /// [data] the Map<String, dynamic>
+  /// note that this currently only works on Android.
+  static Future<void> printOpenBill({
+    Map<String, dynamic>? openBill,
+    Map<String, dynamic>? customReceipt,
+    required bool isAdditional,
+    required List<Map<String, dynamic>>? cartItemAdditional,
+    required int orderNumber,
+    required bool canAccessCustomReceipt,
+    required String eMenuLinkShort,
+    required bool isDevicePax,
+  }) async {
+    try {
+      final Map<String, dynamic> arguments = <String, dynamic>{
+        'openBill': openBill,
+        'customReceipt': customReceipt,
+        'isAdditional': isAdditional,
+        'cartItemAdditional': cartItemAdditional,
+        'orderNumber': orderNumber,
+        'canAccessCustomReceipt': canAccessCustomReceipt,
+        'eMenuLinkShort': eMenuLinkShort,
+        'isDevicePax': isDevicePax,
+      };
+      final String? result = await _channel.invokeMethod('printOpenBill', arguments);
+    } on Exception catch (e) {
+      log('[method:printOpenBill]: $e');
+      throw Exception('Error: $e');
+    }
+  }
+
+  /// Passing data from Flutter to Native
+  ///
+  /// [data] the Map<String, dynamic>
+  /// note that this currently only works on Android.
+  static Future<void> printDetailOpenBill({
+    Map<String, dynamic>? openBill,
+    required List<Map<String, dynamic>>? priceAdjustmentAddition,
+    required List<Map<String, dynamic>>? priceAdjustmentReduction,
+    required int taxAmount,
+    required int roundingAmount,
+    required int totalAmount,
+    Map<String, dynamic>? customReceipt,
+    required int orderNumber,
+    required bool canAccessCustomReceipt,
+    required String eMenuLinkShort,
+    required bool isDevicePax,
+  }) async {
+    try {
+      final Map<String, dynamic> arguments = <String, dynamic>{
+        'openBill': openBill,
+        'priceAdjustmentAddition': priceAdjustmentAddition,
+        'priceAdjustmentReduction': priceAdjustmentReduction,
+        'taxAmount': taxAmount,
+        'roundingAmount': roundingAmount,
+        'totalAmount': totalAmount,
+        'customReceipt': customReceipt,
+        'orderNumber': orderNumber,
+        'canAccessCustomReceipt': canAccessCustomReceipt,
+        'eMenuLinkShort': eMenuLinkShort,
+        'isDevicePax': isDevicePax,
+      };
+      final String? result = await _channel.invokeMethod('printDetailOpenBill', arguments);
+    } on Exception catch (e) {
+      log('[method:printDetailOpenBill]: $e');
+      throw Exception('Error: $e');
+    }
+  }
+
+  /// Passing data from Flutter to Native
+  ///
+  /// [data] the Map<String, dynamic>
+  /// note that this currently only works on Android.
+  static Future<void> printCloseBill({
+    required Map<String, dynamic> openBill,
+    required Map<String, dynamic> transaction,
+    required int orderNumber,
+    Map<String, dynamic>? customReceipt,
+    required bool canAccessCustomReceipt,
+    required String eMenuLinkShort,
+    required bool showMpmQr,
+    required bool isDevicePax,
+  }) async {
+    try {
+      final Map<String, dynamic> arguments = <String, dynamic>{
+        'openBill': openBill,
+        'transaction': transaction,
+        'orderNumber': orderNumber,
+        'customReceipt': customReceipt,
+        'canAccessCustomReceipt': canAccessCustomReceipt,
+        'eMenuLinkShort': eMenuLinkShort,
+        'showMpmQr': showMpmQr,
+        'isDevicePax': isDevicePax,
+      };
+      final String? result = await _channel.invokeMethod('printCloseBill', arguments);
+    } on Exception catch (e) {
+      log('[method:printCloseBill]: $e');
+      throw Exception('Error: $e');
+    }
+  }
+
+  /// Passing data from Flutter to Native
+  ///
+  /// [data] the Map<String, dynamic>
+  /// note that this currently only works on Android.
+  static Future<void> printReportCashier({
+    required String merchantName,
+    required String openCashierDate,
+    required String closeCashierDate,
+    required Map<String, dynamic> reportCashier,
+    required String endCash,
+    required Map<String, dynamic> reportCashierSwitcherValue,
+    required bool isPreview,
+    required bool isDevicePax,
+  }) async {
+    try {
+      final Map<String, dynamic> arguments = <String, dynamic>{
+        'merchantName': merchantName,
+        'openCashierDate': openCashierDate,
+        'closeCashierDate': closeCashierDate,
+        'reportCashier': reportCashier,
+        'endCash': endCash,
+        'reportCashierSwitcherValue': reportCashierSwitcherValue,
+        'isPreview': isPreview,
+        'isDevicePax': isDevicePax,
+      };
+      final String? result = await _channel.invokeMethod('printReportCashier', arguments);
+    } on Exception catch (e) {
+      log('[method:printReportCashier]: $e');
+      throw Exception('Error: $e');
+    }
+  }
 }
